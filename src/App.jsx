@@ -1,18 +1,26 @@
 import get_data from "./context/class-a";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+    const [classA, setClassA] = useState(null);
 
-    console.log('App rendered');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await get_data();
+                setClassA(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
 
+        fetchData();
+    }, []);
 
-    // useEffect(() => {
-    //     get_data();
-    // }, []);
+    if (!classA) {
+        return <div>Loading...</div>; // Show a loading state until data is fetched
+    }
 
-    get_data()
-
-    return <></>;
 }
 
 export default App;

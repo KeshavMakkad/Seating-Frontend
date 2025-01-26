@@ -1,3 +1,4 @@
+
 const fill_classroom = (classroom, data) => {
     let col_idx_store = 1;
     for(let column in classroom){
@@ -13,9 +14,9 @@ const fill_classroom = (classroom, data) => {
         }
         col_idx_store += number_of_cols + 1;
         console.log(col_idx_store)
-
     }
+    console.log(classroom)
+    
     return classroom;
 }
-
 export default fill_classroom
